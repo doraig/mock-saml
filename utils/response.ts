@@ -55,7 +55,7 @@ const createResponseXML = async (params: {
         },
       },
       {
-        '@Name': 'firstName',
+        '@Name': 'first_name',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
@@ -65,13 +65,43 @@ const createResponseXML = async (params: {
         },
       },
       {
-        '@Name': 'lastName',
+        '@Name': 'last_name',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
           '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
           '@xsi:type': 'xs:string',
           '#text': user.lastName,
+        },
+      },
+      {
+        '@Name': 'company_name',
+        '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
+        'saml:AttributeValue': {
+          '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
+          '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+          '@xsi:type': 'xs:string',
+          '#text': 'PointClickCare',
+        },
+      },
+      {
+        '@Name': 'website',
+        '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
+        'saml:AttributeValue': {
+          '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
+          '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+          '@xsi:type': 'xs:string',
+          '#text': 'https://help.teamzerocool.dev',
+        },
+      },
+      {
+        '@Name': 'job_title',
+        '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
+        'saml:AttributeValue': {
+          '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
+          '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+          '@xsi:type': 'xs:string',
+          '#text': 'Hacker',
         },
       },
     ],

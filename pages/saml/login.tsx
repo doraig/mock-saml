@@ -143,8 +143,7 @@ export default function Login() {
                       className='select select-bordered'
                       onChange={handleChange}
                       value={state.domain}>
-                      <option value='example.com'>@example.com</option>
-                      <option value='example.org'>@example.org</option>
+                      <option value='pointclickcare.org'>@pointclickcare.com</option>
                     </select>
                   </div>
                   <div className='form-control col-span-2'>
