@@ -8,10 +8,10 @@ export default function Login() {
   const { id, audience, acsUrl, providerName, relayState } = router.query;
 
   const [state, setState] = useState({
-    username: 'jackson',
-    domain: 'example.com',
-    acsUrl: 'https://jackson-demo.boxyhq.com/api/oauth/saml',
-    audience: 'https://saml.boxyhq.com',
+    username: 'zerocool',
+    domain: '@pointclickcare.com',
+    acsUrl: 'http://localhost:8071/saml2/pcc/acs',
+    audience: 'http://localhost:8071',
   });
 
   const acsUrlInp = useRef<HTMLInputElement>(null);
@@ -91,7 +91,7 @@ export default function Login() {
                           id='acsUrl'
                           ref={acsUrlInp}
                           autoComplete='off'
-                          placeholder='https://jackson-demo.boxyhq.com/api/oauth/saml'
+                          placeholder='http://localhost:8071/saml2/pcc/acs'
                           value={state.acsUrl}
                           onChange={handleChange}
                         />
@@ -109,7 +109,7 @@ export default function Login() {
                           name='audience'
                           id='audience'
                           autoComplete='off'
-                          placeholder='https://saml.boxyhq.com'
+                          placeholder='http://localhost:8071  '
                           value={state.audience}
                           onChange={handleChange}
                         />
