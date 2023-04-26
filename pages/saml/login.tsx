@@ -9,7 +9,7 @@ export default function Login() {
 
   const [state, setState] = useState({
     username: 'zerocool',
-    domain: '@pointclickcare.com',
+    domain: 'pointclickcare.com',
     acsUrl: 'http://localhost:8071/saml2/pcc/acs',
     audience: 'http://localhost:8071',
   });
@@ -143,7 +143,7 @@ export default function Login() {
                       className='select select-bordered'
                       onChange={handleChange}
                       value={state.domain}>
-                      <option value='pointclickcare.org'>@pointclickcare.com</option>
+                      <option value='pointclickcare.com'>@pointclickcare.com</option>
                     </select>
                   </div>
                   <div className='form-control col-span-2'>

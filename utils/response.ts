@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import xmlbuilder from 'xmlbuilder';
 import { User } from '../types';
 import saml from '@boxyhq/saml20';
-
+import { faker } from '@faker-js/faker';
 const responseXPath =
   '/*[local-name(.)="Response" and namespace-uri(.)="urn:oasis:names:tc:SAML:2.0:protocol"]';
 
@@ -30,6 +30,8 @@ const createResponseXML = async (params: {
   const inResponseTo = samlReqId;
   // const responseId = crypto.randomBytes(10).toString('hex');
 
+  const fName = faker.name.firstName()
+  const lName = faker.name.lastName()
   const attributeStatement = {
     '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
     '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
@@ -51,7 +53,7 @@ const createResponseXML = async (params: {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
           '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
           '@xsi:type': 'xs:string',
-          '#text': user.email,
+          '#text': `${fName}.${lName}@pointclickcare.com`,
         },
       },
       {
@@ -61,7 +63,7 @@ const createResponseXML = async (params: {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
           '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
           '@xsi:type': 'xs:string',
-          '#text': user.firstName,
+          '#text': fName,
         },
       },
       {
@@ -71,7 +73,7 @@ const createResponseXML = async (params: {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
           '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
           '@xsi:type': 'xs:string',
-          '#text': user.lastName,
+          '#text': lName,
         },
       },
       {
@@ -91,7 +93,7 @@ const createResponseXML = async (params: {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
           '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
           '@xsi:type': 'xs:string',
-          '#text': 'https://help.teamzerocool.dev',
+          '#text': faker.internet.url(),
         },
       },
       {
@@ -101,7 +103,7 @@ const createResponseXML = async (params: {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
           '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
           '@xsi:type': 'xs:string',
-          '#text': 'Hacker',
+          '#text': faker.name.jobTitle(),
         },
       },
     ],
@@ -136,7 +138,7 @@ const createResponseXML = async (params: {
         'saml:Subject': {
           'saml:NameID': {
             '@Format': 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
-            '#text': user.email,
+            '#text': user.firstName,
           },
           'saml:SubjectConfirmation': {
             '@Method': "urn:oasis:names:tc:SAML:2.0:cm:bearer",
