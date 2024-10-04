@@ -9,14 +9,16 @@ export default function Login() {
 
   const authUrl = namespace ? `/api/namespace/${namespace}/saml/auth` : '/api/saml/auth';
   const [state, setState] = useState({
-    username: 'jackson',
+    username: 'buggsbunny',
+    claims: "{}",
     domain: 'example.com',
-    acsUrl: 'https://sso.eu.boxyhq.com/api/oauth/saml',
-    audience: 'https://saml.boxyhq.com',
+    acsUrl: 'http://localhost:8083/api/oauth/saml',
+    audience: 'http://localhost:3100',
   });
 
   const acsUrlInp = useRef<HTMLInputElement>(null);
   const emailInp = useRef<HTMLInputElement>(null);
+  const claims = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (acsUrl && emailInp.current) {
@@ -40,7 +42,7 @@ export default function Login() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { username, domain } = state;
+    const { username, domain, claims } = state;
 
     const response = await fetch(authUrl, {
       method: 'POST',
@@ -53,6 +55,7 @@ export default function Login() {
         audience: audience || state.audience,
         acsUrl: acsUrl || state.acsUrl,
         providerName,
+        claims: claims,
         relayState,
       }),
     });
@@ -70,7 +73,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Mock SAML Identity Provider - Login</title>
+        <title>TeamZeroCool Mock SAML Identity Provider - Login</title>
       </Head>
       <div className='flex min-h-full items-center justify-center'>
         <div className='flex w-full max-w-xl flex-col px-3'>
@@ -163,6 +166,26 @@ export default function Login() {
                     />
                     <label className='label'>
                       <span className='label-text-alt'>Any password works</span>
+                    </label>
+                  </div>
+                  <div className='form-control col-span-2'>
+                    <label className='label'>
+                      <span className='label-text font-bold'>Claims</span>
+                    </label>
+                    <input
+                      name='claims'
+                      id='claims'
+                      ref={claims}
+                      autoComplete='off'
+                      type='text'
+                      placeholder='jackson'
+                      value={state.claims}
+                      onChange={handleChange}
+                      className='input input-bordered'
+                      title='Please provide a mock email address'
+                    />
+                    <label className='label'>
+                      <span className='label-text-alt'>Provide cliams which need to shared in saml response, provide valid json</span>
                     </label>
                   </div>
                   <button className='btn btn-primary col-span-2 block'>Sign In</button>

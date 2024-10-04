@@ -48,7 +48,7 @@ const Home: React.FC<{ metadata: IdPMetadata; params: any }> = ({ metadata, para
           </Link>
         </div>
         <div className='border-2 p-3'>
-          <h2 className='mb-5 text-center text-2xl font-bold text-gray-900'>Mock SAML Metadata</h2>
+          <h2 className='mb-5 text-center text-2xl font-bold text-gray-900'>TeamZerCool Mock SAML Metadata</h2>
           <div className='grid grid-cols-2 gap-y-5 gap-x-5'>
             <div className='form-control'>
               <label className='label'>

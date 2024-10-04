@@ -1,8 +1,8 @@
 {
-  "name": "Mock SAML",
+  "name": "TeamZeroCool Mock SAML",
   "description": "Mock SAML is a free SAML 2.0 Identity Provider for testing SAML SSO integrations.",
-  "repository": "https://github.com/boxyhq/mock-saml",
-  "logo": "https://boxyhq.com/img/logo.png",
+  "repository": "https://github.com/doraig/mock-saml",
+  "logo": "https://sse-dev.pcc-labs.com/favicon.png",
   "keywords": ["saml", "saml2", "saml-idp", "mock-saml-idp", "test-saml", "saml-testing", "fake-saml-idp"],
   "env": {
     "APP_URL": {
